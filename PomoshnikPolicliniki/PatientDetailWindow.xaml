@@ -1,0 +1,42 @@
+﻿<Window x:Class="PomoshnikPolicliniki.PatientDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:PomoshnikPolicliniki"
+        Title="Детали Пациента" Height="600" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Информация о пациенте" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="Симптомы">
+                <DataGrid ItemsSource="{Binding PatientSymptoms}" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Симптом" Binding="{Binding SymptomName}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <TabItem Header="Ответы">
+                <DataGrid ItemsSource="{Binding PatientAnswers}" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Вопрос" Binding="{Binding Question}" Width="*"/>
+                        <DataGridTextColumn Header="Ответ" Binding="{Binding Answer}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <TabItem Header="Диагнозы">
+                <DataGrid ItemsSource="{Binding PatientDiagnoses}" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Диагноз" Binding="{Binding DiagnosisName}" Width="*"/>
+                        <DataGridTextColumn Header="Процент вероятности (%)" Binding="{Binding PercentageOfDiagnosis}" Width="200"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
