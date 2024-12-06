@@ -2,22 +2,43 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:PomoshnikPolicliniki"
-        Title="Pomoshnik Policliniki" Height="450" Width="800">
-    <Grid Margin="10">
+        Title="Помощник Поликлиники"
+        Height="555" Width="800"
+        Background="#F9F9F9">
+
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
-            <Label Content="Поиск:" VerticalAlignment="Center"/>
-            <TextBox x:Name="SearchTextBox" Width="200" Margin="5,0,0,0" 
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,10,0,20">
+            <TextBlock Text="Поиск:" 
+                       FontSize="14" 
+                       FontWeight="Bold" 
+                       Foreground="#555555" 
+                       VerticalAlignment="Center"/>
+            <TextBox x:Name="SearchTextBox" 
+                     Width="300" 
+                     Margin="10,0,0,0" 
+                     Padding="8"
+                     BorderBrush="#B0B0B0" 
+                     BorderThickness="1" 
+                     Background="White" 
                      VerticalAlignment="Center" 
                      TextChanged="SearchTextBox_TextChanged"/>
         </StackPanel>
 
-        <DataGrid x:Name="PatientsDataGrid" Grid.Row="1" AutoGenerateColumns="False" 
-                  IsReadOnly="True" SelectionMode="Single" MouseDoubleClick="PatientsDataGrid_MouseDoubleClick">
+        <DataGrid x:Name="PatientsDataGrid" 
+                  Grid.Row="1" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True" 
+                  SelectionMode="Single" 
+                  MouseDoubleClick="PatientsDataGrid_MouseDoubleClick"
+                  Background="White" 
+                  BorderBrush="#B0B0B0" 
+                  BorderThickness="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding PatientID}" Width="50"/>
                 <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}" Width="*"/>
@@ -25,5 +46,12 @@
                 <DataGridTextColumn Header="Пол" Binding="{Binding Gender}" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <TextBlock Grid.Row="2" 
+                   Text="© 2024 Клиника" 
+                   FontSize="12" 
+                   Foreground="#888888" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,10,0,0"/>
     </Grid>
 </Window>
